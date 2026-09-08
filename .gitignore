@@ -5,3 +5,7 @@ assets/spheriverse-sequence-114.mp4
 # Legacy hero stills retained locally for comparison.
 assets/images/hero-five-scenes.webp
 assets/images/hero-urban.webp
+
+# Local Python cache produced by the video-generation utility.
+__pycache__/
+*.pyc
