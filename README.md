@@ -12,12 +12,6 @@ bash preview.sh
 
 Then open `http://localhost:8000` in the VS Code integrated browser or forward port `8000` from the **Ports** panel.
 
-## Files to update before release
-
-- Replace the four `Coming soon` resource links in `index.html`.
-- Replace the `TODO` citation with the final BibTeX entry.
-- Add the final paper PDF only if it should be hosted with the page.
-
 ## Scene videos and privacy filtering
 
 The scene explorer contains 13 five-second clips selected from the five major

@@ -308,7 +308,7 @@ const showToast = (message) => {
 document.querySelectorAll('[data-coming-soon]').forEach((link) => {
   link.addEventListener('click', (event) => {
     event.preventDefault();
-    showToast('Release link placeholder — ready to replace.');
+    showToast('Coming soon.');
   });
 });
 
