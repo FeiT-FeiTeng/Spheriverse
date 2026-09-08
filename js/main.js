@@ -184,6 +184,82 @@ if (neuralCanvas && neuralStage) {
   drawNeuralSphere();
 }
 
+const buildBenchmarkTable = (dataset, tableDefinition) => {
+  const wrap = document.createElement('div');
+  wrap.className = 'benchmark-table-wrap';
+
+  const table = document.createElement('table');
+  table.className = 'results-table results-table-wide';
+
+  const caption = document.createElement('caption');
+  const captionTitle = document.createElement('strong');
+  const captionNote = document.createElement('span');
+  captionTitle.textContent = tableDefinition.caption;
+  captionNote.textContent = tableDefinition.note;
+  caption.append(captionTitle, captionNote);
+  table.append(caption);
+
+  const head = document.createElement('thead');
+  const groupRow = document.createElement('tr');
+  const methodHead = document.createElement('th');
+  methodHead.scope = 'col';
+  methodHead.rowSpan = 2;
+  methodHead.textContent = 'Method';
+  groupRow.append(methodHead);
+
+  tableDefinition.groups.forEach((group) => {
+    const th = document.createElement('th');
+    th.scope = 'colgroup';
+    th.colSpan = group.columns.length;
+    th.textContent = group.label;
+    groupRow.append(th);
+  });
+
+  const metricRow = document.createElement('tr');
+  const columns = tableDefinition.groups.flatMap((group) => group.columns);
+  columns.forEach((column) => {
+    const th = document.createElement('th');
+    th.scope = 'col';
+    th.textContent = `${column} ↑`;
+    metricRow.append(th);
+  });
+  head.append(groupRow, metricRow);
+  table.append(head);
+
+  const distinctRanks = columns.map((_, columnIndex) => (
+    [...new Set(dataset.rows.map((row) => row[tableDefinition.values][columnIndex]))]
+      .sort((a, b) => b - a)
+  ));
+
+  const body = document.createElement('tbody');
+  dataset.rows.forEach((row) => {
+    const tr = document.createElement('tr');
+    if (row.method === dataset.leader) tr.classList.add('leader');
+    const method = document.createElement('th');
+    method.scope = 'row';
+    method.textContent = row.method;
+    tr.append(method);
+
+    row[tableDefinition.values].forEach((value, columnIndex) => {
+      const td = document.createElement('td');
+      td.textContent = Number(value).toFixed(dataset.precision);
+      if (value === distinctRanks[columnIndex][0]) td.classList.add('best');
+      else if (value === distinctRanks[columnIndex][1]) td.classList.add('second-best');
+      tr.append(td);
+    });
+    body.append(tr);
+  });
+  table.append(body);
+  wrap.append(table);
+  return wrap;
+};
+
+document.querySelectorAll('[data-benchmark-tables]').forEach((container) => {
+  const dataset = window.SPHERIVERSE_BENCHMARKS?.[container.dataset.benchmarkTables];
+  if (!dataset) return;
+  container.replaceChildren(...dataset.tables.map((table) => buildBenchmarkTable(dataset, table)));
+});
+
 const tabs = [...document.querySelectorAll('[data-tab]')];
 const panels = [...document.querySelectorAll('[data-panel]')];
 

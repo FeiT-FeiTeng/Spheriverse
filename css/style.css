@@ -2275,8 +2275,8 @@ body::before {
 .affiliation-logos {
   display: flex;
   align-items: center;
-  gap: 7px;
-  padding-right: 15px;
+  gap: 9px;
+  padding-right: 17px;
   border-right: 1px solid rgba(255, 255, 255, 0.2);
 }
 
@@ -2285,8 +2285,8 @@ body::before {
 }
 
 .affiliation-logo {
-  width: 31px;
-  height: 31px;
+  width: 43px;
+  height: 43px;
   display: grid;
   place-items: center;
   overflow: hidden;
@@ -2298,18 +2298,14 @@ body::before {
 
 .affiliation-logo img {
   display: block;
-  width: 25px;
-  height: 25px;
+  width: 35px;
+  height: 35px;
   object-fit: contain;
 }
 
-.affiliation-logo-ant img {
-  width: 54px;
-  max-width: none;
-  height: 27px;
-  object-fit: contain;
-  object-position: left center;
-  transform: translateX(13px);
+.affiliation-logo-zust img {
+  width: 37px;
+  height: 37px;
 }
 
 .hero-authors {
@@ -2507,6 +2503,87 @@ body::before {
 
 .footer-contact a:hover { color: #fff; }
 
+/* The hierarchy graphic is intrinsically wide, so it spans the section
+   instead of being constrained to a narrow right-hand column. */
+.annotation-layout {
+  grid-template-columns: 1fr;
+  gap: 25px;
+  align-items: start;
+}
+
+.annotation-copy {
+  display: grid;
+  grid-template-columns: minmax(290px, 0.78fr) minmax(0, 1.22fr);
+  grid-template-areas:
+    "eyebrow steps"
+    "title steps"
+    "intro chips";
+  column-gap: 62px;
+  align-items: start;
+}
+
+.annotation-copy .eyebrow { grid-area: eyebrow; }
+.annotation-copy h2 { grid-area: title; }
+.annotation-copy > p { grid-area: intro; }
+.annotation-copy .hierarchy-steps { grid-area: steps; margin-top: 18px; }
+.annotation-copy .class-chips { grid-area: chips; margin-top: 22px; }
+
+.hierarchy-figure {
+  width: 100%;
+  min-height: 0;
+  padding: 48px 20px 20px;
+}
+
+.hierarchy-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.benchmark-table-stack {
+  display: grid;
+  gap: 22px;
+}
+
+.results-table-wide {
+  width: max-content;
+  min-width: 100%;
+  font-size: 0.76rem;
+}
+
+.results-table-wide th,
+.results-table-wide td {
+  min-width: 76px;
+  padding: 9px 12px;
+  white-space: nowrap;
+}
+
+.results-table-wide th:first-child,
+.results-table-wide tbody th {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  min-width: 145px;
+  background: #fff;
+  box-shadow: 1px 0 0 rgba(11, 20, 36, 0.11);
+}
+
+.results-table-wide thead th:first-child {
+  z-index: 4;
+  background: #f6f8fa;
+}
+
+.results-table-wide thead tr:first-child th:not(:first-child) {
+  color: #405164;
+  border-left: 1px solid rgba(11, 20, 36, 0.08);
+  text-align: center;
+}
+
+.results-table-wide tbody tr:hover th:first-child {
+  background: #f3fbfc;
+}
+
 @media (max-width: 1120px) {
   .affiliation-logos { display: none; }
   .fine-scene-grid-three { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -2514,6 +2591,12 @@ body::before {
 
 @media (max-width: 760px) {
   .hero-authors { font-size: 0.72rem; gap: 4px 11px; }
+  .annotation-copy {
+    display: block;
+  }
+  .annotation-copy .hierarchy-steps,
+  .annotation-copy .class-chips { margin-top: 25px; }
+  .hierarchy-figure { padding: 42px 8px 12px; }
   .scene-tabs { grid-template-columns: repeat(5, minmax(70px, 1fr)); overflow-x: auto; }
   .scene-tab { min-height: 66px; padding: 12px 10px; grid-template-columns: 1fr; gap: 5px; }
   .scene-panel { padding: 18px; }
