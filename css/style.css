@@ -2259,9 +2259,16 @@ body::before {
 .hero-video {
   z-index: 0;
   object-fit: contain;
-  object-position: center;
+  object-position: center bottom;
   transform: none;
   filter: saturate(0.94) contrast(1.03);
+}
+
+/* Keep the complete ERP frame while bringing its lower edge into contact
+   with the azimuth scale. Move the full title block down as one unit. */
+.hero-copy {
+  position: relative;
+  top: 46px;
 }
 
 /* Institutional identity, author line, and scene-video explorer ------------ */
@@ -2586,11 +2593,13 @@ body::before {
 
 @media (max-width: 1120px) {
   .affiliation-logos { display: none; }
+  .hero-copy { top: 24px; }
   .fine-scene-grid-three { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 760px) {
   .hero-authors { font-size: 0.72rem; gap: 4px 11px; }
+  .hero-copy { top: 10px; }
   .annotation-copy {
     display: block;
   }
