@@ -1,0 +1,204 @@
+{
+  "source": "fix_6",
+  "fps": 5,
+  "major_categories": [
+    {
+      "id": 1,
+      "name": "Urban Core and Mixed-Use Zones",
+      "environments": [
+        {
+          "code": "1.1",
+          "name": "Central Functional Zone",
+          "sequence": 294,
+          "frames": 25,
+          "video": "assets/videos/scenes/1-1-central-functional-zone.mp4",
+          "poster": "assets/images/scenes/1-1-central-functional-zone.webp",
+          "privacy_detections": {
+            "faces": 0,
+            "plates": 0
+          }
+        },
+        {
+          "code": "1.2",
+          "name": "Mixed Residential–Commercial Districts",
+          "sequence": 526,
+          "frames": 25,
+          "video": "assets/videos/scenes/1-2-mixed-residential-commercial-districts.mp4",
+          "poster": "assets/images/scenes/1-2-mixed-residential-commercial-districts.webp",
+          "privacy_detections": {
+            "faces": 64,
+            "plates": 50
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Expressway Corridors and Peri-urban Areas",
+      "environments": [
+        {
+          "code": "2.1",
+          "name": "Cross-Regional Expressway Corridors",
+          "sequence": 44,
+          "frames": 25,
+          "video": "assets/videos/scenes/2-1-cross-regional-expressway-corridors.mp4",
+          "poster": "assets/images/scenes/2-1-cross-regional-expressway-corridors.webp",
+          "privacy_detections": {
+            "faces": 0,
+            "plates": 0
+          }
+        },
+        {
+          "code": "2.2",
+          "name": "Urban–Rural Interface Zones",
+          "sequence": 354,
+          "frames": 25,
+          "video": "assets/videos/scenes/2-2-urban-rural-interface-zones.mp4",
+          "poster": "assets/images/scenes/2-2-urban-rural-interface-zones.webp",
+          "privacy_detections": {
+            "faces": 1,
+            "plates": 4
+          }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Functional and Restricted Operational Areas",
+      "environments": [
+        {
+          "code": "3.1",
+          "name": "Waterfront Areas",
+          "sequence": 28,
+          "frames": 25,
+          "video": "assets/videos/scenes/3-1-waterfront-areas.mp4",
+          "poster": "assets/images/scenes/3-1-waterfront-areas.webp",
+          "privacy_detections": {
+            "faces": 0,
+            "plates": 0
+          }
+        },
+        {
+          "code": "3.2",
+          "name": "Construction Zone",
+          "sequence": 541,
+          "frames": 25,
+          "video": "assets/videos/scenes/3-2-construction-zone.mp4",
+          "poster": "assets/images/scenes/3-2-construction-zone.webp",
+          "privacy_detections": {
+            "faces": 6,
+            "plates": 16
+          }
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Structurally Constrained Transportation Areas",
+      "environments": [
+        {
+          "code": "4.1",
+          "name": "Elevated Bridge Environments",
+          "sequence": 64,
+          "frames": 25,
+          "video": "assets/videos/scenes/4-1-levated-bridge-environments.mp4",
+          "poster": "assets/images/scenes/4-1-levated-bridge-environments.webp",
+          "privacy_detections": {
+            "faces": 0,
+            "plates": 3
+          }
+        },
+        {
+          "code": "4.2",
+          "name": "Underground Confined Environments",
+          "sequence": 693,
+          "frames": 25,
+          "video": "assets/videos/scenes/4-2-underground-confined-environments.mp4",
+          "poster": "assets/images/scenes/4-2-underground-confined-environments.webp",
+          "privacy_detections": {
+            "faces": 6,
+            "plates": 3
+          }
+        },
+        {
+          "code": "4.3",
+          "name": "Multi-Level Structural Spaces",
+          "sequence": 324,
+          "frames": 25,
+          "video": "assets/videos/scenes/4-3-multi-level-structural-spaces.mp4",
+          "poster": "assets/images/scenes/4-3-multi-level-structural-spaces.webp",
+          "privacy_detections": {
+            "faces": 0,
+            "plates": 16
+          }
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Rural and Natural Passage Environments",
+      "environments": [
+        {
+          "code": "5.1",
+          "name": "Rural Roads",
+          "sequence": 364,
+          "frames": 25,
+          "video": "assets/videos/scenes/5-1-rural-roads.mp4",
+          "poster": "assets/images/scenes/5-1-rural-roads.webp",
+          "privacy_detections": {
+            "faces": 3,
+            "plates": 0
+          }
+        },
+        {
+          "code": "5.2",
+          "name": "Forest Tracks",
+          "sequence": 437,
+          "frames": 25,
+          "video": "assets/videos/scenes/5-2-forest-tracks.mp4",
+          "poster": "assets/images/scenes/5-2-forest-tracks.webp",
+          "privacy_detections": {
+            "faces": 0,
+            "plates": 0
+          }
+        },
+        {
+          "code": "5.3",
+          "name": "Village Access Lanes",
+          "sequence": 380,
+          "frames": 25,
+          "video": "assets/videos/scenes/5-3-village-access-lanes.mp4",
+          "poster": "assets/images/scenes/5-3-village-access-lanes.webp",
+          "privacy_detections": {
+            "faces": 0,
+            "plates": 4
+          }
+        },
+        {
+          "code": "5.4",
+          "name": "Farm Field Tracks",
+          "sequence": 419,
+          "frames": 25,
+          "video": "assets/videos/scenes/5-4-farm-field-tracks.mp4",
+          "poster": "assets/images/scenes/5-4-farm-field-tracks.webp",
+          "privacy_detections": {
+            "faces": 0,
+            "plates": 0
+          }
+        }
+      ]
+    }
+  ],
+  "continuous_drive": {
+    "sequence": 525,
+    "major": "Urban Core and Mixed-Use Zones",
+    "environment": "mixed residential commercial districts",
+    "frames": 100,
+    "video": "assets/videos/continuous-drive-anonymized.mp4",
+    "poster": "assets/images/continuous-drive-anonymized.webp",
+    "privacy_detections": {
+      "faces": 79,
+      "plates": 251
+    }
+  }
+}

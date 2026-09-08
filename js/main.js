@@ -214,6 +214,72 @@ tabs.forEach((tab, index) => {
   });
 });
 
+// Five major categories reveal their fine-grained, five-second scene clips.
+// Video sources are attached only when a panel is opened to keep first load light.
+const sceneTabs = [...document.querySelectorAll('[data-scene-tab]')];
+const scenePanels = [...document.querySelectorAll('[data-scene-panel]')];
+
+const loadSceneVideo = (video) => {
+  const source = video.querySelector('source[data-src]');
+  if (!source || source.src) return;
+  source.src = source.dataset.src;
+  video.load();
+};
+
+const sceneVideoObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    const video = entry.target;
+    const panel = video.closest('[data-scene-panel]');
+    if (entry.isIntersecting && !panel?.hidden && !reduceMotionPreference.matches) {
+      loadSceneVideo(video);
+      video.play().catch(() => {});
+    } else {
+      video.pause();
+    }
+  });
+}, { threshold: 0.28 });
+
+document.querySelectorAll('[data-scene-video]').forEach((video) => {
+  sceneVideoObserver.observe(video);
+});
+
+const activateSceneTab = (key) => {
+  sceneTabs.forEach((tab) => {
+    const active = tab.dataset.sceneTab === key;
+    tab.classList.toggle('is-active', active);
+    tab.setAttribute('aria-selected', String(active));
+    tab.tabIndex = active ? 0 : -1;
+  });
+
+  scenePanels.forEach((panel) => {
+    const active = panel.dataset.scenePanel === key;
+    panel.classList.toggle('is-active', active);
+    panel.hidden = !active;
+    panel.querySelectorAll('[data-scene-video]').forEach((video) => {
+      if (!active) {
+        video.pause();
+        return;
+      }
+      loadSceneVideo(video);
+      if (!reduceMotionPreference.matches) video.play().catch(() => {});
+    });
+  });
+};
+
+sceneTabs.forEach((tab, index) => {
+  tab.addEventListener('click', () => activateSceneTab(tab.dataset.sceneTab));
+  tab.addEventListener('keydown', (event) => {
+    if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+    event.preventDefault();
+    const direction = event.key === 'ArrowRight' ? 1 : -1;
+    const next = sceneTabs[(index + direction + sceneTabs.length) % sceneTabs.length];
+    activateSceneTab(next.dataset.sceneTab);
+    next.focus();
+  });
+});
+
+if (sceneTabs.length) activateSceneTab(sceneTabs[0].dataset.sceneTab);
+
 const lightbox = document.querySelector('[data-lightbox-dialog]');
 const lightboxImage = document.querySelector('[data-lightbox-image]');
 const lightboxClose = document.querySelector('[data-lightbox-close]');
