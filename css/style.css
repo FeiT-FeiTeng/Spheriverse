@@ -1207,11 +1207,8 @@ a {
 .benchmark-tab:last-child { border-right: 0; }
 
 .benchmark-panel {
-  min-height: 620px;
   padding: 30px 0 0;
-  display: grid;
-  grid-template-columns: 0.36fr 0.64fr;
-  gap: 18px;
+  display: block;
   border-radius: 0;
   background: transparent;
 }
@@ -1282,6 +1279,92 @@ a {
   max-height: 710px;
 }
 
+.benchmark-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--ink);
+  font-size: 0.86rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.results-table caption {
+  padding: 24px 26px 20px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+}
+
+.results-table caption strong,
+.results-table caption span {
+  display: block;
+}
+
+.results-table caption strong {
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+}
+
+.results-table caption span {
+  margin-top: 4px;
+  color: var(--ink-soft);
+  font-size: 0.74rem;
+}
+
+.results-table th,
+.results-table td {
+  padding: 10px 26px;
+  text-align: right;
+  border-bottom: 1px solid rgba(11, 20, 36, 0.09);
+}
+
+.results-table th:first-child {
+  text-align: left;
+}
+
+.results-table thead th {
+  color: #687787;
+  background: #f6f8fa;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.results-table tbody th {
+  font-weight: 650;
+}
+
+.results-table tbody tr:hover {
+  background: rgba(74, 245, 255, 0.045);
+}
+
+.results-table tbody tr:last-child th,
+.results-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.results-table .leader th {
+  color: #07111f;
+  font-weight: 850;
+}
+
+.results-table td.best {
+  color: #8e4b00;
+  background: #ffe8cc;
+  font-weight: 850;
+}
+
+.results-table td.second-best {
+  color: #275d8c;
+  background: #e1f0ff;
+  font-weight: 750;
+}
+
 /* SphereOcc */
 .sphereocc-section {
   color: #fff;
@@ -1332,6 +1415,14 @@ a {
 .method-metrics span {
   color: rgba(255, 255, 255, 0.5);
   font-size: 0.72rem;
+}
+
+.method-metrics small {
+  display: block;
+  margin-top: 6px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.62rem;
+  white-space: nowrap;
 }
 
 .method-figure {
@@ -1699,6 +1790,8 @@ a {
   .benchmark-panel { min-height: auto; padding: 10px; }
   .benchmark-copy { min-height: 350px; padding: 30px 22px; }
   .benchmark-visual { min-height: 300px; }
+  .results-table th,
+  .results-table td { padding: 9px 14px; }
   .method-metrics { width: 100%; }
   .method-metrics div { flex: 1; }
   .method-pillars { grid-template-columns: 1fr; }
