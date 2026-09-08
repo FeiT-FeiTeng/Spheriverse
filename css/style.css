@@ -2259,7 +2259,7 @@ body::before {
 .hero-video {
   z-index: 0;
   object-fit: contain;
-  object-position: center 72%;
+  object-position: center top;
   transform: none;
   filter: saturate(0.94) contrast(1.03);
 }
