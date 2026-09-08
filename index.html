@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Spheriverse is a real-world spherical 3D perception dataset with 89,674 images, 644 synchronized sequences, and benchmarks for occupancy, semantic mapping, and 3D detection.">
+  <meta name="theme-color" content="#08111f">
+  <meta property="og:title" content="Spheriverse">
+  <meta property="og:description" content="3D Scene Understanding from Spherical Observations in the Wild">
+  <meta property="og:image" content="assets/images/hero-urban-sequence-106.webp">
+  <title>Spheriverse — Spherical 3D Scene Understanding</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-header>
+    <div class="nav-shell">
+      <a class="brand" href="#overview" aria-label="Spheriverse home">
+        <span class="brand-mark" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </span>
+        <span>Spheriverse</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>
+        <span></span><span></span>
+        <span class="sr-only">Toggle navigation</span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" data-nav>
+        <a href="#dataset">Dataset</a>
+        <a href="#motion">Video</a>
+        <a href="#scenes">Scenes</a>
+        <a href="#annotations">Annotations</a>
+        <a href="#benchmarks">Benchmarks</a>
+        <a href="#sphereocc">SphereOcc</a>
+        <a href="#resources">Resources</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="overview" aria-labelledby="hero-title">
+      <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/images/hero-urban-sequence-106.webp" aria-hidden="true" data-hero-video>
+        <source src="assets/spheriverse-urban-sequence-106.mp4" type="video/mp4">
+      </video>
+      <div class="hero-shade"></div>
+      <div class="longitude-grid" aria-hidden="true"></div>
+
+      <div class="hero-content page-shell">
+        <div class="hero-copy" data-reveal>
+          <div class="hero-kicker"><span class="pulse-dot"></span> Spherical 3D perception dataset · 2026</div>
+          <h1 id="hero-title">Spheriverse</h1>
+          <p class="hero-subtitle">3D Scene Understanding from<br>Spherical Observations in the Wild</p>
+          <p class="hero-meta">A real-world collection connecting complete spherical observations with dense, metric 3D understanding.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#dataset">Explore the dataset</a>
+            <a class="button button-glass" href="#resources">Paper &amp; resources</a>
+          </div>
+        </div>
+
+        <div class="hero-ai" aria-hidden="true" data-reveal data-neural-stage>
+          <canvas class="neural-sphere" width="720" height="720" data-neural-sphere></canvas>
+          <div class="ai-reticle"><span></span><span></span></div>
+          <div class="ai-core"><strong>360°</strong><small>× 145°</small></div>
+          <span class="coordinate-note coordinate-theta">θ &nbsp; −π · 0 · +π</span>
+          <span class="coordinate-note coordinate-phi">φ &nbsp; +72.5°<br>−72.5°</span>
+          <span class="coordinate-note coordinate-space">URBAN / SEQUENCE 106</span>
+        </div>
+      </div>
+
+      <div class="azimuth-ruler page-shell" aria-hidden="true">
+        <span>−180°</span><i></i><span>−90°</span><i></i><span>0°</span><i></i><span>+90°</span><i></i><span>+180°</span>
+      </div>
+
+      <div class="hero-stats page-shell" aria-label="Dataset highlights">
+        <div><strong>89,674</strong><span>Spherical images</span></div>
+        <div><strong>644</strong><span>Image–LiDAR sequences</span></div>
+        <div><strong>13</strong><span>Diverse regions</span></div>
+        <div><strong>30+</strong><span>Benchmarked methods</span></div>
+      </div>
+    </section>
+
+    <section class="section motion-section" id="motion" aria-labelledby="motion-title">
+      <div class="page-shell">
+        <div class="section-heading split-heading motion-heading" data-reveal>
+          <div>
+            <p class="eyebrow">Dataset in motion</p>
+            <h2 id="motion-title">A continuous spherical drive.</h2>
+          </div>
+          <p>Explore one continuous real-world sequence through its complete surrounding view—the native visual domain of Spheriverse and the starting point for its 3D perception tasks.</p>
+        </div>
+
+        <div class="motion-frame" data-reveal>
+          <div class="motion-corners" aria-hidden="true"></div>
+          <video class="motion-video" controls muted loop playsinline preload="metadata" poster="assets/images/hero-urban-sequence-106.webp">
+            <source src="assets/spheriverse-urban-sequence-106.mp4" type="video/mp4">
+            Your browser does not support embedded MP4 video.
+          </video>
+          <div class="motion-readout" aria-hidden="true">
+            <span>SEQ / 106</span>
+            <span>URBAN</span>
+            <span>360° × 145°</span>
+            <span>5 FPS</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section intro-section" id="dataset">
+      <div class="page-shell">
+        <div class="section-heading split-heading" data-reveal>
+          <div>
+            <p class="eyebrow">Dataset at a glance</p>
+            <h2>Built for real-world spherical spatial perception.</h2>
+          </div>
+          <p>Spheriverse combines high-quality spherical imagery with dense LiDAR observations and spatial annotations across geographically and visually diverse driving environments.</p>
+        </div>
+
+        <div class="sensor-grid">
+          <article class="sensor-card sensor-card-camera" data-reveal>
+            <div class="sensor-icon sphere-icon" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+            <p class="card-index">01</p>
+            <h3>Spherical imaging</h3>
+            <p>A continuous surrounding observation captured at <strong>5188 × 1979</strong> pixels.</p>
+            <div class="sensor-spec"><strong>360° × 145°</strong><span>horizontal × vertical FoV</span></div>
+          </article>
+
+          <article class="sensor-card sensor-card-lidar" data-reveal>
+            <div class="sensor-icon lidar-icon" aria-hidden="true">
+              <span></span><span></span><span></span><span></span>
+            </div>
+            <p class="card-index">02</p>
+            <h3>Dense LiDAR sensing</h3>
+            <p>High-density range observations provide reliable geometric support for 3D annotation.</p>
+            <div class="sensor-spec"><strong>128 beams</strong><span>Hesai OT128 LiDAR</span></div>
+          </article>
+
+          <article class="sensor-card sensor-card-pose" data-reveal>
+            <div class="sensor-icon pose-icon" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+            <p class="card-index">03</p>
+            <h3>Synchronized acquisition</h3>
+            <p>Camera, LiDAR, and GNSS/INS streams are aligned within a unified acquisition platform.</p>
+            <div class="sensor-spec"><strong>20 s · 5 Hz</strong><span>per synchronized sequence</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section scene-section" id="scenes">
+      <div class="page-shell">
+        <div class="section-heading" data-reveal>
+          <p class="eyebrow">Scene diversity</p>
+          <h2>Five major scene categories.<br>Thirteen fine-grained environments.</h2>
+          <p>Traffic function, environmental context, spatial layout, illumination, and weather vary substantially across the collection.</p>
+        </div>
+
+        <div class="scene-grid" data-reveal>
+          <article class="scene-card scene-card-wide">
+            <img src="assets/images/scene-urban.webp" alt="Urban mixed-use spherical driving scene" loading="lazy">
+            <div class="scene-overlay"><span>Urban</span><small>Urban Core &amp; Mixed-Use Zones</small></div>
+          </article>
+          <article class="scene-card">
+            <img src="assets/images/scene-expressway.webp" alt="Expressway corridor spherical driving scene" loading="lazy">
+            <div class="scene-overlay"><span>Expressway</span><small>Corridors &amp; Peri-urban Areas</small></div>
+          </article>
+          <article class="scene-card">
+            <img src="assets/images/scene-functional.webp" alt="Indoor functional-area spherical driving scene" loading="lazy">
+            <div class="scene-overlay"><span>Functional</span><small>Restricted Operational Areas</small></div>
+          </article>
+          <article class="scene-card">
+            <img src="assets/images/scene-rural.webp" alt="Rural spherical driving scene" loading="lazy">
+            <div class="scene-overlay"><span>Rural</span><small>Natural Passage Environments</small></div>
+          </article>
+          <article class="scene-card scene-card-wide">
+            <img src="assets/images/scene-structural.webp" alt="Structurally constrained spherical driving scene" loading="lazy">
+            <div class="scene-overlay"><span>Structural</span><small>Constrained Transportation Areas</small></div>
+          </article>
+        </div>
+
+        <button class="figure-card taxonomy-figure zoomable" type="button" data-lightbox="assets/images/scene-taxonomy.webp" aria-label="Open scene taxonomy figure">
+          <span class="figure-label">Scene taxonomy · representative spherical observations</span>
+          <img src="assets/images/scene-taxonomy.webp" alt="Five major and thirteen fine-grained Spheriverse scene categories" loading="lazy">
+          <span class="zoom-hint">Expand figure</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="section annotation-section" id="annotations">
+      <div class="page-shell annotation-layout">
+        <div class="annotation-copy" data-reveal>
+          <p class="eyebrow">Semantic annotations</p>
+          <h2>One dataset,<br>three levels of understanding.</h2>
+          <p>The hierarchy preserves detailed real-world concepts while providing standardized category spaces for reproducible evaluation.</p>
+
+          <div class="hierarchy-steps" aria-label="Three-level semantic annotation hierarchy">
+            <div><strong>33</strong><span>Fine-grained classes</span></div>
+            <i aria-hidden="true">→</i>
+            <div><strong>14</strong><span>Intermediate classes</span></div>
+            <i aria-hidden="true">→</i>
+            <div><strong>9</strong><span>Unified classes</span></div>
+          </div>
+
+          <div class="class-chips" aria-label="Nine unified semantic classes">
+            <span class="class-person">Pedestrian</span>
+            <span class="class-vehicle">Vehicle</span>
+            <span class="class-bike">Cyclist</span>
+            <span class="class-building">Building</span>
+            <span class="class-vegetation">Vegetation</span>
+            <span class="class-pillar">Pole &amp; Barrier</span>
+            <span class="class-road">Road</span>
+            <span class="class-surface">Surface</span>
+            <span class="class-other">Others</span>
+          </div>
+        </div>
+
+        <button class="figure-card hierarchy-figure zoomable" type="button" data-lightbox="assets/images/semantic-hierarchy.webp" aria-label="Open annotation hierarchy figure" data-reveal>
+          <span class="figure-label">Hierarchical semantic taxonomy</span>
+          <img src="assets/images/semantic-hierarchy.webp" alt="Mapping between 33, 14, and 9 semantic classes" loading="lazy">
+          <span class="zoom-hint">Expand figure</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="section benchmark-section" id="benchmarks">
+      <div class="page-shell">
+        <div class="section-heading split-heading" data-reveal>
+          <div>
+            <p class="eyebrow">Unified benchmarks</p>
+            <h2>Three tasks for spherical 3D scene understanding.</h2>
+          </div>
+          <p>More than 30 representative methods are evaluated under common protocols with overall and scene-wise analyses.</p>
+        </div>
+
+        <div class="benchmark-tabs" role="tablist" aria-label="Benchmark tasks" data-tabs>
+          <button class="benchmark-tab is-active" id="tab-occ" role="tab" aria-selected="true" aria-controls="panel-occ" data-tab="occ">
+            <span>01</span><strong>Semantic Occupancy</strong><small>IoU · mIoU · GeoIoU</small>
+          </button>
+          <button class="benchmark-tab" id="tab-map" role="tab" aria-selected="false" aria-controls="panel-map" data-tab="map">
+            <span>02</span><strong>Semantic Mapping</strong><small>Class-wise IoU · mIoU</small>
+          </button>
+          <button class="benchmark-tab" id="tab-det" role="tab" aria-selected="false" aria-controls="panel-det" data-tab="det">
+            <span>03</span><strong>3D Object Detection</strong><small>mAP · NDS</small>
+          </button>
+        </div>
+
+        <div class="benchmark-panels" data-reveal>
+          <article class="benchmark-panel is-active" id="panel-occ" role="tabpanel" aria-labelledby="tab-occ" data-panel="occ">
+            <div class="benchmark-copy">
+              <p class="panel-number">Benchmark 01</p>
+              <h3>Dense semantic occupancy prediction</h3>
+              <p>Reconstruct the surrounding 3D world as a dense semantic voxel grid from a single spherical observation.</p>
+              <dl><div><dt>Output</dt><dd>200 × 200 × 16 voxels</dd></div><div><dt>Resolution</dt><dd>0.5 m</dd></div><div><dt>Classes</dt><dd>9 semantic categories</dd></div></dl>
+            </div>
+            <button class="benchmark-visual zoomable" type="button" data-lightbox="assets/images/occupancy-benchmark.webp" aria-label="Open occupancy benchmark figure">
+              <img src="assets/images/occupancy-benchmark.webp" alt="Qualitative semantic occupancy comparison" loading="lazy">
+            </button>
+          </article>
+
+          <article class="benchmark-panel" id="panel-map" role="tabpanel" aria-labelledby="tab-map" data-panel="map" hidden>
+            <div class="benchmark-copy">
+              <p class="panel-number">Benchmark 02</p>
+              <h3>BEV semantic mapping</h3>
+              <p>Infer a dense bird’s-eye-view semantic map and evaluate spatial consistency across diverse spherical scenes.</p>
+              <dl><div><dt>Output</dt><dd>200 × 200 BEV grid</dd></div><div><dt>Metric</dt><dd>Mean IoU</dd></div><div><dt>Methods</dt><dd>10 adapted baselines</dd></div></dl>
+            </div>
+            <button class="benchmark-visual benchmark-visual-portrait zoomable" type="button" data-lightbox="assets/images/mapping-benchmark.webp" aria-label="Open semantic mapping benchmark figure">
+              <img src="assets/images/mapping-benchmark.webp" alt="Spherical input and BEV semantic mapping predictions" loading="lazy">
+            </button>
+          </article>
+
+          <article class="benchmark-panel" id="panel-det" role="tabpanel" aria-labelledby="tab-det" data-panel="det" hidden>
+            <div class="benchmark-copy">
+              <p class="panel-number">Benchmark 03</p>
+              <h3>Panoramic 3D object detection</h3>
+              <p>Localize traffic participants in metric 3D space from complete spherical observations under the nuScenes evaluation protocol.</p>
+              <dl><div><dt>Metrics</dt><dd>mAP and NDS</dd></div><div><dt>Protocol</dt><dd>Unified training setup</dd></div><div><dt>Methods</dt><dd>9 representative models</dd></div></dl>
+            </div>
+            <button class="benchmark-visual zoomable" type="button" data-lightbox="assets/images/detection-benchmark.webp" aria-label="Open 3D detection benchmark figure">
+              <img src="assets/images/detection-benchmark.webp" alt="Qualitative panoramic 3D object detection comparison" loading="lazy">
+            </button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section sphereocc-section" id="sphereocc">
+      <div class="page-shell">
+        <div class="method-header" data-reveal>
+          <div>
+            <p class="eyebrow">Reference model</p>
+            <h2>SphereOcc</h2>
+            <p>A feed-forward occupancy framework coupling spherical geometry with semantic evidence to construct metric voxel representations.</p>
+          </div>
+          <div class="method-metrics">
+            <div><strong>13.91%</strong><span>mIoU</span></div>
+            <div><strong>24.65%</strong><span>GeoIoU</span></div>
+          </div>
+        </div>
+
+        <button class="method-figure zoomable" type="button" data-lightbox="assets/images/sphereocc-overview.webp" aria-label="Open SphereOcc overview figure" data-reveal>
+          <img src="assets/images/sphereocc-overview.webp" alt="Overview of the SphereOcc architecture" loading="lazy">
+          <span class="zoom-hint">Expand architecture</span>
+        </button>
+
+        <div class="method-pillars" data-reveal>
+          <article><span>CSRR</span><h3>Spherical geometry organization</h3><p>Forms Cartesian–spherical voxel features by embedding sphere-aligned range–azimuth relations.</p></article>
+          <article><span>SER</span><h3>Semantic evidence re-querying</h3><p>Uses RTZ-conditioned voxel queries to retrieve relevant evidence from source spherical image features.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section statistics-section" id="statistics">
+      <div class="page-shell statistics-layout">
+        <div class="statistics-copy" data-reveal>
+          <p class="eyebrow">Spatial statistics</p>
+          <h2>Analyze the world by direction and distance.</h2>
+          <p>Angular and radial partitions reveal strong spatial variation in class composition, reflecting the directional structure and long-range imbalance of real driving scenes.</p>
+        </div>
+        <button class="figure-card statistics-figure zoomable" type="button" data-lightbox="assets/images/spatial-statistics.webp" aria-label="Open spatial statistics figure" data-reveal>
+          <img src="assets/images/spatial-statistics.webp" alt="Angular and radial semantic class distributions" loading="lazy">
+          <span class="zoom-hint">Expand statistics</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="section resource-section" id="resources">
+      <div class="page-shell">
+        <div class="resource-heading" data-reveal>
+          <p class="eyebrow">Resources</p>
+          <h2>Start exploring Spheriverse.</h2>
+          <p>The public links below are prepared as release placeholders and can be replaced when the paper, code, and data are available.</p>
+        </div>
+
+        <div class="resource-grid" data-reveal>
+          <a class="resource-card" href="#citation" data-coming-soon>
+            <span class="resource-icon">↗</span><small>Manuscript</small><strong>Paper PDF</strong><em>Coming soon</em>
+          </a>
+          <a class="resource-card" href="#citation" data-coming-soon>
+            <span class="resource-icon">⌘</span><small>Implementation</small><strong>Source code</strong><em>Coming soon</em>
+          </a>
+          <a class="resource-card" href="#citation" data-coming-soon>
+            <span class="resource-icon">↓</span><small>Dataset release</small><strong>Download data</strong><em>Coming soon</em>
+          </a>
+          <a class="resource-card" href="#citation" data-coming-soon>
+            <span class="resource-icon">▤</span><small>Evaluation</small><strong>Benchmark server</strong><em>Coming soon</em>
+          </a>
+        </div>
+
+        <div class="citation-card" id="citation" data-reveal>
+          <div>
+            <p class="eyebrow">Citation</p>
+            <h3>Cite Spheriverse</h3>
+            <p>The final venue, author list, and publication year can be updated before release.</p>
+          </div>
+          <div class="citation-code">
+            <pre><code id="bibtex">@article{teng2026spheriverse,
+  title   = {Spheriverse: 3D Scene Understanding from
+             Spherical Observations in the Wild},
+  author  = {Teng, Fei and others},
+  journal = {IEEE Transactions on Pattern Analysis
+             and Machine Intelligence},
+  year    = {2026}
+}</code></pre>
+            <button class="copy-button" type="button" data-copy="bibtex">Copy BibTeX</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="page-shell">
+      <div class="brand footer-brand"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span><span>Spheriverse</span></div>
+      <p>3D Scene Understanding from Spherical Observations in the Wild</p>
+      <p class="footer-note">Project homepage preview · replace release links before publication.</p>
+    </div>
+  </footer>
+
+  <dialog class="lightbox" data-lightbox-dialog aria-label="Expanded research figure">
+    <button type="button" class="lightbox-close" data-lightbox-close aria-label="Close expanded figure">×</button>
+    <img src="" alt="Expanded research figure" data-lightbox-image>
+  </dialog>
+
+  <div class="toast" role="status" aria-live="polite" data-toast></div>
+  <script src="js/main.js"></script>
+</body>
+</html>
