@@ -1633,7 +1633,7 @@ a {
 
 .site-footer .page-shell {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto minmax(220px, 1fr) minmax(310px, 370px) auto;
   gap: 36px;
   align-items: center;
 }
@@ -2795,149 +2795,111 @@ body::before {
   }
 }
 
-/* Public, privacy-conscious visitor summary -------------------------------- */
-.visitor-section {
-  padding: 76px 0;
-  color: #eaf9ff;
-  border-top: 1px solid rgba(74, 245, 255, 0.18);
-  background:
-    radial-gradient(circle at 80% 30%, rgba(74, 245, 255, 0.07), transparent 26%),
-    radial-gradient(circle at 12% 75%, rgba(255, 61, 174, 0.055), transparent 24%),
-    #070810;
-}
-
-.visitor-heading {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 30px;
-}
-
-.visitor-heading h2 {
-  max-width: 760px;
-  margin: 8px 0 0;
-  font-size: clamp(2.1rem, 4.5vw, 4.8rem);
-  line-height: 0.98;
-  letter-spacing: -0.055em;
-}
-
-.visitor-heading > a {
-  padding-bottom: 7px;
-  color: var(--cyan);
-  border-bottom: 1px solid rgba(74, 245, 255, 0.45);
-  font-size: 0.76rem;
-  font-weight: 720;
-  letter-spacing: 0.045em;
-  text-transform: uppercase;
-}
-
-.visitor-metrics {
-  margin-top: 42px;
+/* Compact global visitor indicator in the footer --------------------------- */
+.footer-reach {
+  min-width: 0;
+  padding: 0 24px;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  border: 1px solid rgba(74, 245, 255, 0.2);
-  background: rgba(8, 11, 20, 0.78);
+  grid-template-columns: minmax(190px, 1fr) auto;
+  align-items: center;
+  gap: 16px;
+  border-left: 1px solid rgba(74, 245, 255, 0.13);
+  border-right: 1px solid rgba(255, 61, 174, 0.13);
 }
 
-.visitor-metrics > div {
-  min-height: 132px;
-  padding: 24px 26px;
+.footer-world-map {
+  display: block;
+  width: 100%;
+  max-width: 245px;
+  height: auto;
+  overflow: visible;
+  filter: drop-shadow(0 0 10px rgba(74, 245, 255, 0.1));
+}
+
+.footer-map-grid {
+  fill: none;
+  stroke: rgba(74, 245, 255, 0.14);
+  stroke-width: 0.75;
+}
+
+.footer-map-land {
+  fill: rgba(74, 245, 255, 0.09);
+  stroke: rgba(113, 246, 255, 0.66);
+  stroke-width: 1;
+  stroke-linejoin: round;
+}
+
+.footer-map-points circle {
+  fill: var(--magenta);
+  stroke: #fff;
+  stroke-width: 0.7;
+  filter: drop-shadow(0 0 4px rgba(255, 61, 174, 0.86));
+  animation: footer-map-pulse 2.4s ease-in-out infinite alternate;
+}
+
+.footer-map-points circle:nth-child(even) {
+  fill: var(--cyan);
+  filter: drop-shadow(0 0 4px rgba(74, 245, 255, 0.86));
+  animation-delay: -1.2s;
+}
+
+.footer-visitor-count {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: flex-start;
+  white-space: nowrap;
 }
 
-.visitor-metrics > div + div {
-  border-left: 1px solid rgba(255, 61, 174, 0.15);
-}
-
-.visitor-metrics strong {
+.footer-visitor-count strong {
   color: #fff;
-  font-size: clamp(2rem, 3vw, 3.4rem);
+  font-size: 1.75rem;
   line-height: 1;
-  letter-spacing: -0.055em;
+  letter-spacing: -0.045em;
   font-variant-numeric: tabular-nums;
 }
 
-.visitor-metrics span {
-  margin-top: 9px;
-  color: #8da9b7;
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.075em;
-  text-transform: uppercase;
-}
-
-.visitor-locations {
-  margin-top: 18px;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
-}
-
-.visitor-locations > div {
-  padding: 24px 26px 26px;
-  border: 1px solid rgba(74, 245, 255, 0.16);
-  background: rgba(8, 11, 20, 0.58);
-}
-
-.visitor-locations > div > span {
-  color: #9bb8c4;
-  font-size: 0.67rem;
-  font-weight: 750;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-}
-
-.location-list {
-  margin-top: 17px;
-  display: grid;
-  gap: 11px;
-}
-
-.location-list > div {
-  position: relative;
-  padding-bottom: 8px;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 18px;
-  overflow: hidden;
-}
-
-.location-list > div span,
-.location-list > div strong {
-  position: relative;
-  z-index: 1;
-  font-size: 0.76rem;
-  font-weight: 640;
-}
-
-.location-list > div strong {
+.footer-visitor-count span {
+  margin-top: 6px;
   color: var(--cyan);
-  font-variant-numeric: tabular-nums;
+  font: 650 0.57rem/1.2 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
-.location-list > div i {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: var(--location-share);
-  height: 2px;
-  background: linear-gradient(90deg, var(--cyan), var(--magenta));
-  box-shadow: 0 0 10px rgba(74, 245, 255, 0.35);
+@keyframes footer-map-pulse {
+  from { opacity: 0.45; transform: scale(0.82); transform-origin: center; }
+  to { opacity: 1; transform: scale(1.18); transform-origin: center; }
 }
 
-.location-list small {
-  color: rgba(220, 239, 246, 0.44);
-  font-size: 0.72rem;
+@media (max-width: 1200px) {
+  .site-footer .page-shell {
+    grid-template-columns: auto 1fr auto;
+  }
+  .site-footer .page-shell > p { display: none; }
 }
 
-@media (max-width: 760px) {
-  .visitor-section { padding: 58px 0; }
-  .visitor-heading { align-items: flex-start; flex-direction: column; gap: 18px; }
-  .visitor-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .visitor-metrics > div { min-height: 104px; padding: 18px; }
-  .visitor-metrics > div:nth-child(3) { border-left: 0; border-top: 1px solid rgba(255, 61, 174, 0.15); }
-  .visitor-metrics > div:nth-child(4) { border-top: 1px solid rgba(255, 61, 174, 0.15); }
-  .visitor-locations { grid-template-columns: 1fr; }
+@media (max-width: 980px) {
+  .site-footer .page-shell { grid-template-columns: 1fr auto; gap: 22px; }
+  .footer-reach {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    width: min(100%, 430px);
+    padding: 14px 0 0;
+    border: 0;
+    border-top: 1px solid rgba(74, 245, 255, 0.13);
+  }
+  .footer-contact { justify-items: end; }
+}
+
+@media (max-width: 620px) {
+  .site-footer .page-shell { grid-template-columns: 1fr; }
+  .footer-contact { justify-items: start; }
+  .footer-reach {
+    grid-row: auto;
+    grid-template-columns: minmax(160px, 1fr) auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-map-points circle { animation: none; }
 }
