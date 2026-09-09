@@ -1,0 +1,38 @@
+name: Update lifetime visit counter
+
+on:
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lifetime-visit-counter
+  cancel-in-progress: false
+
+jobs:
+  update-counter:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out the website
+        uses: actions/checkout@v4
+
+      - name: Update the archived monthly totals
+        env:
+          UMAMI_SHARE_ID: 25j9UgiLIg8fd51W
+        run: python3 tools/update_visitor_count.py
+
+      - name: Commit a changed count
+        run: |
+          if git diff --quiet -- data/visitor-count.json; then
+            echo "Visitor count is unchanged."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/visitor-count.json
+          git commit -m "chore: update lifetime visit count"
+          git push

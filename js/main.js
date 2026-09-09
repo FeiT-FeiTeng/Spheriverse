@@ -406,32 +406,19 @@ document.querySelectorAll('[data-copy]').forEach((button) => {
 const visitorSection = document.querySelector('[data-visitor-stats]');
 
 if (visitorSection) {
-  const apiBase = 'https://cloud.umami.is/analytics/us/api';
-  const publicShareId = '25j9UgiLIg8fd51W';
   const numberFormatter = new Intl.NumberFormat('en-US');
 
   const loadVisitorCount = async () => {
     try {
-      const shareResponse = await fetch(`${apiBase}/share/${publicShareId}`);
-      if (!shareResponse.ok) throw new Error('Share configuration unavailable');
-      const share = await shareResponse.json();
-      const headers = {
-        'x-umami-share-token': share.token,
-        'x-umami-share-context': '1',
-      };
-      const query = new URLSearchParams({
-        startAt: '0',
-        endAt: String(Date.now()),
+      const response = await fetch(`data/visitor-count.json?v=${Date.now()}`, {
+        cache: 'no-store',
       });
-      const endpoint = `${apiBase}/websites/${share.websiteId}`;
-      const statsResponse = await fetch(`${endpoint}/stats?${query}`, { headers });
-      if (!statsResponse.ok) throw new Error('Visitor statistics unavailable');
-      const stats = await statsResponse.json();
-      const count = visitorSection.querySelector('[data-visitor-value="visitors"]');
-      if (count) count.textContent = numberFormatter.format(stats.visitors || 0);
+      if (!response.ok) throw new Error('Lifetime visitor count unavailable');
+      const data = await response.json();
+      const count = visitorSection.querySelector('[data-visitor-value="visits"]');
+      if (count) count.textContent = numberFormatter.format(data.total || 0);
     } catch {
-      const count = visitorSection.querySelector('[data-visitor-value="visitors"]');
-      if (count) count.textContent = '0';
+      // Keep the last count embedded in the page when the archive is unavailable.
     }
   };
 
