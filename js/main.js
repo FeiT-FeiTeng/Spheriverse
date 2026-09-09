@@ -402,3 +402,99 @@ document.querySelectorAll('[data-copy]').forEach((button) => {
     }
   });
 });
+
+const visitorSection = document.querySelector('[data-visitor-stats]');
+
+if (visitorSection) {
+  const apiBase = 'https://cloud.umami.is/analytics/us/api';
+  const publicShareId = '25j9UgiLIg8fd51W';
+  const numberFormatter = new Intl.NumberFormat('en-US');
+  const countryNames = typeof Intl.DisplayNames === 'function'
+    ? new Intl.DisplayNames(['en'], { type: 'region' })
+    : null;
+
+  const setValue = (key, value) => {
+    const element = visitorSection.querySelector(`[data-visitor-value="${key}"]`);
+    if (element) element.textContent = numberFormatter.format(value || 0);
+  };
+
+  const renderLocations = (selector, rows, formatLabel = (label) => label) => {
+    const container = visitorSection.querySelector(selector);
+    if (!container) return;
+    container.replaceChildren();
+
+    if (!rows.length) {
+      const empty = document.createElement('small');
+      empty.textContent = 'Collecting new visits…';
+      container.append(empty);
+      return;
+    }
+
+    const maximum = Math.max(...rows.map((row) => Number(row.y) || 0), 1);
+    rows.slice(0, 6).forEach((row) => {
+      const item = document.createElement('div');
+      const label = document.createElement('span');
+      const value = document.createElement('strong');
+      const bar = document.createElement('i');
+      label.textContent = formatLabel(row.x);
+      value.textContent = numberFormatter.format(row.y || 0);
+      bar.style.setProperty('--location-share', `${Math.max(8, (Number(row.y) / maximum) * 100)}%`);
+      item.append(label, value, bar);
+      container.append(item);
+    });
+  };
+
+  const loadVisitorStats = async () => {
+    try {
+      const shareResponse = await fetch(`${apiBase}/share/${publicShareId}`);
+      if (!shareResponse.ok) throw new Error('Share configuration unavailable');
+      const share = await shareResponse.json();
+      const headers = {
+        'x-umami-share-token': share.token,
+        'x-umami-share-context': '1',
+      };
+      const query = new URLSearchParams({
+        startAt: '0',
+        endAt: String(Date.now()),
+      });
+      const endpoint = `${apiBase}/websites/${share.websiteId}`;
+      const [statsResponse, countriesResponse, regionsResponse] = await Promise.all([
+        fetch(`${endpoint}/stats?${query}`, { headers }),
+        fetch(`${endpoint}/metrics?${query}&type=country&limit=500`, { headers }),
+        fetch(`${endpoint}/metrics?${query}&type=region&limit=100`, { headers }),
+      ]);
+
+      if (![statsResponse, countriesResponse, regionsResponse].every((response) => response.ok)) {
+        throw new Error('Visitor statistics unavailable');
+      }
+
+      const [stats, countries, regions] = await Promise.all([
+        statsResponse.json(),
+        countriesResponse.json(),
+        regionsResponse.json(),
+      ]);
+
+      setValue('visitors', stats.visitors);
+      setValue('visits', stats.visits);
+      setValue('pageviews', stats.pageviews);
+      setValue('countries', countries.length);
+      renderLocations('[data-visitor-countries]', countries, (code) => {
+        try { return countryNames?.of(code) || code || 'Unknown'; }
+        catch { return code || 'Unknown'; }
+      });
+      renderLocations('[data-visitor-regions]', regions, (region) => region || 'Unknown');
+    } catch {
+      visitorSection.querySelectorAll('[data-visitor-value]').forEach((element) => {
+        element.textContent = '—';
+      });
+      visitorSection.querySelectorAll('.location-list').forEach((container) => {
+        container.replaceChildren();
+        const message = document.createElement('small');
+        message.textContent = 'Live statistics temporarily unavailable.';
+        container.append(message);
+      });
+    }
+  };
+
+  loadVisitorStats();
+}
