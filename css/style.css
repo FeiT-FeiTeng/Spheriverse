@@ -2687,13 +2687,18 @@ body::before {
 }
 
 .hero {
-  height: clamp(680px, calc(38.14vw + 110px), 900px);
-  min-height: 680px;
+  height: clamp(540px, 38.14vw, 900px);
+  min-height: 540px;
 }
 
 .hero-content {
-  padding-top: 36px;
-  padding-bottom: 130px;
+  padding-top: 10px;
+  padding-bottom: 126px;
+}
+
+.hero-copy,
+.hero-ai {
+  top: -12px;
 }
 
 .hero-kicker {
@@ -2743,13 +2748,13 @@ body::before {
 
 @media (max-width: 980px) {
   .hero {
-    height: 760px;
-    min-height: 760px;
+    height: 620px;
+    min-height: 620px;
   }
 
   .hero-content {
     min-height: 0;
-    padding: 34px 0 150px;
+    padding: 24px 0 140px;
   }
 }
 
