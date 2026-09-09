@@ -1881,7 +1881,7 @@ body::before {
     radial-gradient(circle at 83% 26%, rgba(255, 40, 180, 0.22), transparent 24%),
     radial-gradient(circle at 74% 58%, rgba(37, 226, 255, 0.16), transparent 31%),
     linear-gradient(90deg, rgba(2, 3, 9, 0.92) 0%, rgba(4, 4, 13, 0.61) 44%, rgba(4, 2, 12, 0.09) 80%),
-    linear-gradient(0deg, rgba(3, 3, 10, 0.76) 0%, rgba(3, 4, 12, 0.16) 22%, rgba(3, 4, 12, 0.05) 50%, rgba(5, 2, 13, 0.35) 100%);
+    linear-gradient(0deg, rgba(3, 3, 10, 0.92) 0%, rgba(3, 4, 12, 0.08) 45%, rgba(5, 2, 13, 0.35) 100%);
 }
 
 .longitude-grid {
@@ -2251,9 +2251,9 @@ body::before {
   z-index: 0;
   inset: -34px;
   pointer-events: none;
-  opacity: 0.7;
+  opacity: 0.42;
   background: #05050a url('../assets/images/hero-urban-sequence-106.webp') center / cover no-repeat;
-  filter: blur(18px) saturate(0.86) brightness(0.78);
+  filter: blur(24px) saturate(0.8) brightness(0.62);
 }
 
 .hero-video {
@@ -2268,7 +2268,7 @@ body::before {
    with the azimuth scale. Move the full title block down as one unit. */
 .hero-copy {
   position: relative;
-  top: 46px;
+  top: 0;
 }
 
 /* Institutional identity, author line, and scene-video explorer ------------ */
@@ -2672,4 +2672,113 @@ body::before {
 @media (max-width: 500px) {
   .nav-identity .brand { font-size: 0.95rem; }
   .scene-panel > header { align-items: flex-start; }
+}
+
+/* Final hero composition: navigation occupies its own row, while the hero
+   height follows the native ERP aspect ratio plus the lower data strip. */
+.site-header,
+.site-header.is-scrolled {
+  position: sticky;
+  inset: 0 0 auto;
+  color: #fff;
+  background: rgba(5, 5, 10, 0.97);
+  box-shadow: 0 1px 0 rgba(74, 245, 255, 0.18);
+  backdrop-filter: blur(18px);
+}
+
+.hero {
+  height: clamp(680px, calc(38.14vw + 110px), 900px);
+  min-height: 680px;
+}
+
+.hero-content {
+  padding-top: 36px;
+  padding-bottom: 130px;
+}
+
+.hero-kicker {
+  display: none;
+}
+
+.hero h1 {
+  font-size: clamp(4.8rem, 8.5vw, 8.5rem);
+  line-height: 0.88;
+}
+
+.hero-subtitle {
+  margin-top: 20px;
+  font-size: clamp(1.45rem, 2.45vw, 2.35rem);
+  line-height: 1.12;
+}
+
+.hero-meta {
+  max-width: 620px;
+  margin-top: 14px;
+  font-size: 0.94rem;
+  line-height: 1.5;
+}
+
+.hero-authors {
+  max-width: 700px;
+  margin-top: 14px;
+  gap: 3px 14px;
+  font-size: 0.76rem;
+  line-height: 1.34;
+}
+
+.author-note {
+  margin-top: 4px;
+  font-size: 0.61rem;
+}
+
+.hero-authors + .author-note + .hero-actions {
+  margin-top: 15px;
+}
+
+.hero-actions .button {
+  min-height: 44px;
+  padding-inline: 18px;
+  font-size: 0.84rem;
+}
+
+@media (max-width: 980px) {
+  .hero {
+    height: 760px;
+    min-height: 760px;
+  }
+
+  .hero-content {
+    min-height: 0;
+    padding: 34px 0 150px;
+  }
+}
+
+@media (max-width: 760px) {
+  .site-header.is-open {
+    color: #fff;
+    background: #05050a;
+  }
+
+  .site-nav {
+    color: #e8f7fb;
+    background: #080a12;
+  }
+
+  .hero {
+    height: auto;
+    min-height: 820px;
+  }
+
+  .hero-content {
+    min-height: 820px;
+    padding: 54px 0 250px;
+  }
+
+  .hero h1 {
+    font-size: clamp(3.8rem, 18vw, 5.7rem);
+  }
+
+  .hero-copy {
+    top: 0;
+  }
 }
