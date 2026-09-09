@@ -1881,7 +1881,7 @@ body::before {
     radial-gradient(circle at 83% 26%, rgba(255, 40, 180, 0.22), transparent 24%),
     radial-gradient(circle at 74% 58%, rgba(37, 226, 255, 0.16), transparent 31%),
     linear-gradient(90deg, rgba(2, 3, 9, 0.92) 0%, rgba(4, 4, 13, 0.61) 44%, rgba(4, 2, 12, 0.09) 80%),
-    linear-gradient(0deg, rgba(3, 3, 10, 0.97) 0%, rgba(3, 4, 12, 0.05) 50%, rgba(5, 2, 13, 0.35) 100%);
+    linear-gradient(0deg, rgba(3, 3, 10, 0.76) 0%, rgba(3, 4, 12, 0.16) 22%, rgba(3, 4, 12, 0.05) 50%, rgba(5, 2, 13, 0.35) 100%);
 }
 
 .longitude-grid {
@@ -2251,9 +2251,9 @@ body::before {
   z-index: 0;
   inset: -34px;
   pointer-events: none;
-  opacity: 0.42;
+  opacity: 0.7;
   background: #05050a url('../assets/images/hero-urban-sequence-106.webp') center / cover no-repeat;
-  filter: blur(24px) saturate(0.8) brightness(0.62);
+  filter: blur(18px) saturate(0.86) brightness(0.78);
 }
 
 .hero-video {
