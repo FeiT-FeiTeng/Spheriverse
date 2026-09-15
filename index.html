@@ -248,7 +248,7 @@
           <p>The hierarchy preserves detailed real-world concepts while providing standardized category spaces for reproducible evaluation.</p>
 
           <div class="hierarchy-steps" aria-label="Three-level semantic annotation hierarchy">
-            <div><strong>33</strong><span>Fine-grained classes</span></div>
+            <div><strong>33</strong><span>Fine-grained attributes</span></div>
             <i aria-hidden="true">→</i>
             <div><strong>14</strong><span>Intermediate classes</span></div>
             <i aria-hidden="true">→</i>
@@ -264,15 +264,174 @@
             <span class="class-pillar">Pole &amp; Barrier</span>
             <span class="class-road">Road</span>
             <span class="class-surface">Surface</span>
-            <span class="class-other">Others</span>
+            <span class="class-other">Other</span>
           </div>
         </div>
 
-        <button class="figure-card hierarchy-figure zoomable" type="button" data-lightbox="assets/images/semantic-hierarchy.webp" aria-label="Open annotation hierarchy figure" data-reveal>
-          <span class="figure-label">Hierarchical semantic taxonomy</span>
-          <img src="assets/images/semantic-hierarchy.webp" alt="Mapping between 33, 14, and 9 semantic classes" loading="lazy">
-          <span class="zoom-hint">Expand figure</span>
-        </button>
+        <article class="taxonomy-panel" data-reveal aria-labelledby="taxonomy-title">
+          <header class="data-panel-header">
+            <div>
+              <span class="data-panel-index">01 / TAXONOMY</span>
+              <h3 id="taxonomy-title">From detailed attributes to unified evaluation classes</h3>
+            </div>
+            <p>Percentages report the annotation share at each semantic level.</p>
+          </header>
+
+          <div class="taxonomy-table-wrap" tabindex="0" role="region" aria-label="Three-level semantic taxonomy table">
+            <table class="taxonomy-table">
+              <thead>
+                <tr>
+                  <th scope="col">Fine-grained attribute</th>
+                  <th scope="col">Share</th>
+                  <th scope="col">Intermediate class</th>
+                  <th scope="col">Share</th>
+                  <th scope="col">Unified class</th>
+                  <th scope="col">Share</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="tax-group tax-person">
+                  <th scope="row"><span class="tax-id">01</span>Pedestrian</th>
+                  <td><span class="tax-share" style="--share:0.0520%">0.0520%</span></td>
+                  <td class="tax-intermediate">1. Pedestrian</td>
+                  <td><span class="tax-share" style="--share:0.0520%">0.0520%</span></td>
+                  <td class="tax-unified">1. Pedestrian</td>
+                  <td><span class="tax-share" style="--share:0.0520%">0.0520%</span></td>
+                </tr>
+
+                <tr class="tax-group tax-vehicle">
+                  <th scope="row"><span class="tax-id">02</span>Passenger vehicle</th>
+                  <td><span class="tax-share" style="--share:9.6620%">9.6620%</span></td>
+                  <td class="tax-intermediate" rowspan="3">2. Vehicle</td>
+                  <td rowspan="3"><span class="tax-share" style="--share:10.0105%">10.0105%</span></td>
+                  <td class="tax-unified" rowspan="3">2. Vehicle</td>
+                  <td rowspan="3"><span class="tax-share" style="--share:10.0105%">10.0105%</span></td>
+                </tr>
+                <tr class="tax-group tax-vehicle">
+                  <th scope="row"><span class="tax-id">03</span>Heavy vehicle</th>
+                  <td><span class="tax-share" style="--share:0.2452%">0.2452%</span></td>
+                </tr>
+                <tr class="tax-group tax-vehicle tax-group-end">
+                  <th scope="row"><span class="tax-id">04</span>Construction vehicle</th>
+                  <td><span class="tax-share" style="--share:0.1033%">0.1033%</span></td>
+                </tr>
+
+                <tr class="tax-group tax-bike">
+                  <th scope="row"><span class="tax-id">05</span>Moving bicycle</th>
+                  <td><span class="tax-share" style="--share:0.0015%">0.0015%</span></td>
+                  <td class="tax-intermediate" rowspan="7">3. Cyclist</td>
+                  <td rowspan="7"><span class="tax-share" style="--share:0.2242%">0.2242%</span></td>
+                  <td class="tax-unified" rowspan="7">3. Cyclist</td>
+                  <td rowspan="7"><span class="tax-share" style="--share:0.2242%">0.2242%</span></td>
+                </tr>
+                <tr class="tax-group tax-bike"><th scope="row"><span class="tax-id">06</span>Stationary bicycle</th><td><span class="tax-share" style="--share:0.0066%">0.0066%</span></td></tr>
+                <tr class="tax-group tax-bike"><th scope="row"><span class="tax-id">07</span>Bicycle group</th><td><span class="tax-share" style="--share:0.0015%">0.0015%</span></td></tr>
+                <tr class="tax-group tax-bike"><th scope="row"><span class="tax-id">08</span>Moving motorcycle</th><td><span class="tax-share" style="--share:0.0559%">0.0559%</span></td></tr>
+                <tr class="tax-group tax-bike"><th scope="row"><span class="tax-id">09</span>Stationary motorcycle</th><td><span class="tax-share" style="--share:0.0828%">0.0828%</span></td></tr>
+                <tr class="tax-group tax-bike"><th scope="row"><span class="tax-id">10</span>Motorcycle group</th><td><span class="tax-share" style="--share:0.0028%">0.0028%</span></td></tr>
+                <tr class="tax-group tax-bike tax-group-end"><th scope="row"><span class="tax-id">11</span>Other cyclist</th><td><span class="tax-share" style="--share:0.0731%">0.0731%</span></td></tr>
+
+                <tr class="tax-group tax-building">
+                  <th scope="row"><span class="tax-id">12</span>Permanent building</th>
+                  <td><span class="tax-share" style="--share:15.7269%">15.7269%</span></td>
+                  <td class="tax-intermediate" rowspan="2">4. Building</td>
+                  <td rowspan="2"><span class="tax-share" style="--share:15.8154%">15.8154%</span></td>
+                  <td class="tax-unified" rowspan="9">4. Building</td>
+                  <td rowspan="9"><span class="tax-share" style="--share:18.0318%">18.0318%</span></td>
+                </tr>
+                <tr class="tax-group tax-building"><th scope="row"><span class="tax-id">13</span>Temporary building</th><td><span class="tax-share" style="--share:0.0885%">0.0885%</span></td></tr>
+                <tr class="tax-group tax-building"><th scope="row"><span class="tax-id">14</span>Bridge</th><td><span class="tax-share" style="--share:0.2767%">0.2767%</span></td><td class="tax-intermediate">5. Bridge</td><td><span class="tax-share" style="--share:0.2767%">0.2767%</span></td></tr>
+                <tr class="tax-group tax-building"><th scope="row"><span class="tax-id">15</span>Tunnel</th><td><span class="tax-share" style="--share:1.2082%">1.2082%</span></td><td class="tax-intermediate">6. Tunnel</td><td><span class="tax-share" style="--share:1.2082%">1.2082%</span></td></tr>
+                <tr class="tax-group tax-building">
+                  <th scope="row"><span class="tax-id">16</span>Advertising object</th>
+                  <td><span class="tax-share" style="--share:0.3067%">0.3067%</span></td>
+                  <td class="tax-intermediate" rowspan="4">12. Man-made</td>
+                  <td rowspan="4"><span class="tax-share" style="--share:0.5802%">0.5802%</span></td>
+                </tr>
+                <tr class="tax-group tax-building"><th scope="row"><span class="tax-id">17</span>Art object</th><td><span class="tax-share" style="--share:0.0298%">0.0298%</span></td></tr>
+                <tr class="tax-group tax-building"><th scope="row"><span class="tax-id">18</span>Functional object</th><td><span class="tax-share" style="--share:0.2073%">0.2073%</span></td></tr>
+                <tr class="tax-group tax-building"><th scope="row"><span class="tax-id">19</span>Other man-made object</th><td><span class="tax-share" style="--share:0.0364%">0.0364%</span></td></tr>
+                <tr class="tax-group tax-building tax-group-end"><th scope="row"><span class="tax-id">20</span>Pavilion</th><td><span class="tax-share" style="--share:0.1526%">0.1526%</span></td><td class="tax-intermediate">13. Pavilion</td><td><span class="tax-share" style="--share:0.1526%">0.1526%</span></td></tr>
+
+                <tr class="tax-group tax-vegetation">
+                  <th scope="row"><span class="tax-id">21</span>Vegetation</th>
+                  <td><span class="tax-share" style="--share:26.6991%">26.6991%</span></td>
+                  <td class="tax-intermediate">7. Vegetation</td>
+                  <td><span class="tax-share" style="--share:26.6991%">26.6991%</span></td>
+                  <td class="tax-unified">5. Vegetation</td>
+                  <td><span class="tax-share" style="--share:26.6991%">26.6991%</span></td>
+                </tr>
+
+                <tr class="tax-group tax-pillar">
+                  <th scope="row"><span class="tax-id">22</span>Bollard</th>
+                  <td><span class="tax-share" style="--share:2.4379%">2.4379%</span></td>
+                  <td class="tax-intermediate" rowspan="4">11. Barrier</td>
+                  <td rowspan="4"><span class="tax-share" style="--share:6.6195%">6.6195%</span></td>
+                  <td class="tax-unified" rowspan="5">6. Pole &amp; Barrier</td>
+                  <td rowspan="5"><span class="tax-share" style="--share:7.3890%">7.3890%</span></td>
+                </tr>
+                <tr class="tax-group tax-pillar"><th scope="row"><span class="tax-id">23</span>Fence</th><td><span class="tax-share" style="--share:3.7391%">3.7391%</span></td></tr>
+                <tr class="tax-group tax-pillar"><th scope="row"><span class="tax-id">24</span>Curb</th><td><span class="tax-share" style="--share:0.4326%">0.4326%</span></td></tr>
+                <tr class="tax-group tax-pillar"><th scope="row"><span class="tax-id">25</span>Other barrier</th><td><span class="tax-share" style="--share:0.0099%">0.0099%</span></td></tr>
+                <tr class="tax-group tax-pillar tax-group-end"><th scope="row"><span class="tax-id">26</span>Pole</th><td><span class="tax-share" style="--share:0.7695%">0.7695%</span></td><td class="tax-intermediate">8. Pole</td><td><span class="tax-share" style="--share:0.7695%">0.7695%</span></td></tr>
+
+                <tr class="tax-group tax-road">
+                  <th scope="row"><span class="tax-id">27</span>Drivable road</th>
+                  <td><span class="tax-share" style="--share:28.4774%">28.4774%</span></td>
+                  <td class="tax-intermediate" rowspan="2">9. Road</td>
+                  <td rowspan="2"><span class="tax-share" style="--share:30.9190%">30.9190%</span></td>
+                  <td class="tax-unified" rowspan="2">7. Road</td>
+                  <td rowspan="2"><span class="tax-share" style="--share:30.9190%">30.9190%</span></td>
+                </tr>
+                <tr class="tax-group tax-road tax-group-end"><th scope="row"><span class="tax-id">28</span>Non-drivable road</th><td><span class="tax-share" style="--share:2.4416%">2.4416%</span></td></tr>
+
+                <tr class="tax-group tax-surface">
+                  <th scope="row"><span class="tax-id">29</span>Vegetated surface</th>
+                  <td><span class="tax-share" style="--share:0.9616%">0.9616%</span></td>
+                  <td class="tax-intermediate" rowspan="4">10. Surface</td>
+                  <td rowspan="4"><span class="tax-share" style="--share:2.8002%">2.8002%</span></td>
+                  <td class="tax-unified" rowspan="4">8. Surface</td>
+                  <td rowspan="4"><span class="tax-share" style="--share:2.8002%">2.8002%</span></td>
+                </tr>
+                <tr class="tax-group tax-surface"><th scope="row"><span class="tax-id">30</span>Farmland</th><td><span class="tax-share" style="--share:1.5752%">1.5752%</span></td></tr>
+                <tr class="tax-group tax-surface"><th scope="row"><span class="tax-id">31</span>Gravel</th><td><span class="tax-share" style="--share:0.1357%">0.1357%</span></td></tr>
+                <tr class="tax-group tax-surface tax-group-end"><th scope="row"><span class="tax-id">32</span>Other surface</th><td><span class="tax-share" style="--share:0.1277%">0.1277%</span></td></tr>
+
+                <tr class="tax-group tax-other">
+                  <th scope="row"><span class="tax-id">33</span>Other</th>
+                  <td><span class="tax-share" style="--share:3.8728%">3.8728%</span></td>
+                  <td class="tax-intermediate">14. Other</td>
+                  <td><span class="tax-share" style="--share:3.8728%">3.8728%</span></td>
+                  <td class="tax-unified">9. Other</td>
+                  <td><span class="tax-share" style="--share:3.8728%">3.8728%</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <section class="spatial-composition" id="statistics" data-reveal aria-labelledby="spatial-composition-title">
+          <header class="data-panel-header">
+            <div>
+              <span class="data-panel-index">02 / SPATIAL COMPOSITION</span>
+              <h3 id="spatial-composition-title">Semantic composition changes with direction and distance</h3>
+            </div>
+            <p>Each column is normalized to 100%; darker cells indicate a larger within-bin class share.</p>
+          </header>
+          <div class="spatial-heatmap-grid">
+            <article class="spatial-heatmap-card">
+              <div class="spatial-heatmap-title"><strong>Azimuth</strong><span>Relative to the ego-vehicle heading</span></div>
+              <div class="spatial-heatmap-scroll"><div class="spatial-heatmap" data-spatial-heatmap="azimuth"></div></div>
+            </article>
+            <article class="spatial-heatmap-card">
+              <div class="spatial-heatmap-title"><strong>Radial distance</strong><span>Measured from the ego-vehicle origin</span></div>
+              <div class="spatial-heatmap-scroll"><div class="spatial-heatmap" data-spatial-heatmap="radial"></div></div>
+            </article>
+          </div>
+          <div class="spatial-legend" aria-label="Heatmap color scale from zero to fifty percent">
+            <span>0%</span><i aria-hidden="true"></i><span>50%</span><strong>Within-bin class share</strong>
+          </div>
+        </section>
       </div>
     </section>
 
@@ -337,20 +496,6 @@
           <article><span>CSRR</span><h3>Spherical geometry organization</h3><p>Forms Cartesian–spherical voxel features by embedding sphere-aligned range–azimuth relations.</p></article>
           <article><span>SER</span><h3>Semantic evidence re-querying</h3><p>Uses RTZ-conditioned voxel queries to retrieve relevant evidence from source spherical image features.</p></article>
         </div>
-      </div>
-    </section>
-
-    <section class="section statistics-section" id="statistics">
-      <div class="page-shell statistics-layout">
-        <div class="statistics-copy" data-reveal>
-          <p class="eyebrow">Spatial statistics</p>
-          <h2>Analyze the world by direction and distance.</h2>
-          <p>Angular and radial partitions reveal strong spatial variation in class composition, reflecting the directional structure and long-range imbalance of real driving scenes.</p>
-        </div>
-        <button class="figure-card statistics-figure zoomable" type="button" data-lightbox="assets/images/spatial-statistics.webp" aria-label="Open spatial statistics figure" data-reveal>
-          <img src="assets/images/spatial-statistics.webp" alt="Angular and radial semantic class distributions" loading="lazy">
-          <span class="zoom-hint">Expand statistics</span>
-        </button>
       </div>
     </section>
 
